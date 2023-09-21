@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_demo/lib.dart';
+import 'package:material_demo/pages/card_detail_page.dart';
 
 class CardWidget extends StatelessWidget {
   const CardWidget({
@@ -55,7 +56,17 @@ class CardWidget extends StatelessWidget {
             child: Row(
               children: [
                 FilledButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const CardDetailPage(
+                            title: 'Title',
+                          );
+                        },
+                      ),
+                    );
+                  },
                   child: const Text(
                     'View',
                   ),
