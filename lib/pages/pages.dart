@@ -3,4 +3,4 @@
 export 'card_page.dart';
 export 'list_card_page.dart';
 export 'my_home_page.dart';
-export 'school_page.dart';
+export 'select_options_page.dart';

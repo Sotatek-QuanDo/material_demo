@@ -37,17 +37,16 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'List Cards',
           ),
           NavigationDestination(
-            selectedIcon: const Icon(Icons.school),
-            icon: Badge.count(
-                count: 10000, child: const Icon(Icons.school_outlined)),
-            label: 'School',
+            icon:
+                Badge.count(count: 10000, child: const Icon(Icons.select_all)),
+            label: 'Select ',
           ),
         ],
       ),
       body: <Widget>[
         const CardPage(),
         const ListCardPage(),
-        const SchoolPage(),
+        const SelectOptionsPage(),
       ][currentPageIndex],
     );
   }

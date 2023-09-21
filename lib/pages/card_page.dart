@@ -14,14 +14,19 @@ class _CardPageState extends State<CardPage> {
     return SafeArea(
       child: Column(
         children: [
-          Expanded(child: _buildCardWidgets()),
+          Expanded(child: buildCardWidgets()),
           horizontalDivider,
+          const Text(
+            'Some new IconButton',
+            style: TextStyle(fontWeight: FontWeight.w500),
+          ),
+          Expanded(child: buildIconButtonWidgets()),
         ],
       ),
     );
   }
 
-  Widget _buildCardWidgets() {
+  Widget buildCardWidgets() {
     return GridView(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -55,6 +60,32 @@ class _CardPageState extends State<CardPage> {
             height: 100,
             child: Center(child: Text('Outline Card')),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildIconButtonWidgets() {
+    return GridView(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 1,
+        childAspectRatio: 1,
+        crossAxisSpacing: 0.0,
+        mainAxisSpacing: 5,
+        mainAxisExtent: 100,
+      ),
+      children: [
+        IconButton.filled(
+          onPressed: () {},
+          icon: const Icon(Icons.settings),
+        ),
+        IconButton.filledTonal(
+          onPressed: () {},
+          icon: const Icon(Icons.settings),
+        ),
+        IconButton.outlined(
+          onPressed: () {},
+          icon: const Icon(Icons.settings),
         ),
       ],
     );
