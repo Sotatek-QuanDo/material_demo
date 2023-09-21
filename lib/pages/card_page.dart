@@ -12,43 +12,51 @@ class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            const Card(
-              elevation: 4,
-              shadowColor: Colors.pink,
-              child: SizedBox(
-                height: 100,
-                width: double.infinity,
-                child: Center(child: Text('Elevated Card')),
-              ),
-            ),
-            horizontalDivider,
-            const Card(
-              color: Colors.pink,
-              child: SizedBox(
-                height: 100,
-                width: double.infinity,
-                child: Center(child: Text('Filled Card')),
-              ),
-            ),
-            horizontalDivider,
-            const Card(
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.pink),
-              ),
-              child: SizedBox(
-                height: 100,
-                width: double.infinity,
-                child: Center(child: Text('Outline Card')),
-              ),
-            ),
-            horizontalDivider,
-          ],
-        ),
+      child: Column(
+        children: [
+          Expanded(child: _buildCardWidgets()),
+          horizontalDivider,
+        ],
       ),
+    );
+  }
+
+  Widget _buildCardWidgets() {
+    return GridView(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1,
+        crossAxisSpacing: 0.0,
+        mainAxisSpacing: 5,
+        mainAxisExtent: 100,
+      ),
+      children: const [
+        Card(
+          elevation: 4,
+          child: SizedBox(
+            child: Center(child: Text('Elevated Card')),
+          ),
+        ),
+        Card(
+          color: Colors.green,
+          child: SizedBox(
+            height: 100,
+            child: Center(child: Text('Filled Card')),
+          ),
+        ),
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.green,
+            ),
+          ),
+          child: SizedBox(
+            height: 100,
+            child: Center(child: Text('Outline Card')),
+          ),
+        ),
+      ],
     );
   }
 }

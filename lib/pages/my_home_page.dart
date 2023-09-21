@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Badge(
               child: Icon(Icons.view_carousel),
             ),
-            label: 'Business',
+            label: 'List Cards',
           ),
           NavigationDestination(
             selectedIcon: const Icon(Icons.school),
@@ -46,11 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: <Widget>[
         const CardPage(),
-        Container(
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: const Text('Page 1'),
-        ),
+        const ListCardPage(),
         const SchoolPage(),
       ][currentPageIndex],
     );
