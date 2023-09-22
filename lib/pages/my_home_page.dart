@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:material_demo/lib.dart';
+import 'package:material_demo/pages/carousel_page.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class NavigatorPage extends StatefulWidget {
+  const NavigatorPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<NavigatorPage> createState() => _NavigatorPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _NavigatorPageState extends State<NavigatorPage> {
   int currentPageIndex = 0;
 
   @override
@@ -25,14 +26,13 @@ class _MyHomePageState extends State<MyHomePage> {
           NavigationDestination(
             icon: Badge.count(
               count: 1,
-              smallSize: 0,
               child: const Icon(Icons.card_giftcard),
             ),
             label: 'Card',
           ),
           const NavigationDestination(
             icon: Badge(
-              child: Icon(Icons.view_carousel),
+              child: Icon(Icons.card_travel_outlined),
             ),
             label: 'List Cards',
           ),
@@ -41,12 +41,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 Badge.count(count: 10000, child: const Icon(Icons.select_all)),
             label: 'Select ',
           ),
+          NavigationDestination(
+            icon:
+                Badge.count(count: 99, child: const Icon(Icons.view_carousel)),
+            label: 'Carousel ',
+          ),
         ],
       ),
       body: <Widget>[
         const CardPage(),
         const ListCardPage(),
         const SelectOptionsPage(),
+        const CarouselPage(),
       ][currentPageIndex],
     );
   }

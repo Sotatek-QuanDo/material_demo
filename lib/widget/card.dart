@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:material_demo/lib.dart';
-import 'package:material_demo/pages/card_detail_page.dart';
 
 class CardWidget extends StatelessWidget {
   const CardWidget({

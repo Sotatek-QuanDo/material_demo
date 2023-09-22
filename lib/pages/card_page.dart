@@ -15,7 +15,13 @@ class _CardPageState extends State<CardPage> {
       child: Column(
         children: [
           Expanded(child: buildCardWidgets()),
-          horizontalDivider,
+          const Expanded(
+            child: Center(
+              child: Text(
+                  'Badges show notifications, counts, or status information on navigation items and icons',
+                  style: TextStyle(fontWeight: FontWeight.w500)),
+            ),
+          ),
           const Text(
             'Some new IconButton',
             style: TextStyle(fontWeight: FontWeight.w500),

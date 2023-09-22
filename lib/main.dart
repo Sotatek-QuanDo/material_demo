@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
           seedColor: Colors.green,
         ),
       ),
-      home: const MyHomePage(),
+      home: const NavigatorPage(),
     );
   }
 }
