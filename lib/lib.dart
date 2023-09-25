@@ -3,5 +3,6 @@
 export 'constant/constant.dart';
 export 'gen/gen.dart';
 export 'main.dart';
+export 'navigator.dart';
 export 'pages/pages.dart';
 export 'widget/widget.dart';

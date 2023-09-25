@@ -16,7 +16,7 @@ class _SelectOptionsPageState extends State<SelectOptionsPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Widgets for eachs requirement'),
@@ -34,6 +34,9 @@ class _SelectOptionsPageState extends State<SelectOptionsPage> {
               Tab(
                 text: 'Chips',
               ),
+              Tab(
+                text: 'Pickers',
+              ),
             ],
           ),
         ),
@@ -43,6 +46,7 @@ class _SelectOptionsPageState extends State<SelectOptionsPage> {
             buildMultiChoice(),
             buildSwitchChoice(),
             buildChipsChoice(),
+            const NestedTabBar('Picker'),
           ],
         ),
       ),
@@ -267,6 +271,147 @@ class _SelectOptionsPageState extends State<SelectOptionsPage> {
             },
           ),
         ),
+      ],
+    );
+  }
+
+  // Widget buildPicker()
+}
+
+class NestedTabBar extends StatefulWidget {
+  const NestedTabBar(this.outerTab, {super.key});
+
+  final String outerTab;
+
+  @override
+  State<NestedTabBar> createState() => _NestedTabBarState();
+}
+
+class _NestedTabBarState extends State<NestedTabBar>
+    with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        TabBar.secondary(
+          controller: _tabController,
+          tabs: const <Widget>[
+            Tab(text: 'Date Picker'),
+            Tab(text: 'Time Picker'),
+            Tab(text: 'Slider'),
+          ],
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              buildDatePicker(),
+              buildTimePicker(),
+              buildSlider(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildDatePicker() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        OutlinedButton(
+          onPressed: () {
+            showDateRangePicker(
+              context: context,
+              firstDate: DateTime.now(),
+              lastDate: DateTime(DateTime.now().year + 1, 12, 31),
+              initialEntryMode: DatePickerEntryMode.input,
+            );
+          },
+          child: const Text('Show date range picker'),
+        ),
+        OutlinedButton(
+          onPressed: () {
+            showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime.now(),
+              lastDate: DateTime(DateTime.now().year + 1, 12, 31),
+            );
+          },
+          child: const Text('Show date picker dialog'),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 1.5,
+          child: InputDatePickerFormField(
+            firstDate: DateTime.now(),
+            lastDate: DateTime(DateTime.now().year + 1, 12, 31),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget buildTimePicker() {
+    return Column(
+      children: [
+        OutlinedButton(
+          onPressed: () {
+            showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+                initialEntryMode: TimePickerEntryMode.dial);
+          },
+          child: const Text(
+            'Show time picker',
+          ),
+        ),
+      ],
+    );
+  }
+
+  double _currentSliderValue = 20;
+  double _currentContinuousSliderValue = 20;
+
+  Widget buildSlider() {
+    return Column(
+      children: [
+        Slider(
+          value: _currentSliderValue,
+          max: 100,
+          divisions: 5,
+          label: _currentSliderValue.round().toString(),
+          onChanged: (double value) {
+            setState(() {
+              _currentSliderValue = value;
+            });
+          },
+        ),
+        Slider(
+          value: _currentContinuousSliderValue,
+          max: 100,
+          divisions: 100,
+          label: _currentContinuousSliderValue.round().toString(),
+          onChanged: (double value) {
+            setState(() {
+              _currentContinuousSliderValue = value;
+            });
+          },
+        )
       ],
     );
   }
