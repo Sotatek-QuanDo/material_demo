@@ -15,10 +15,10 @@ class _CardPageState extends State<CardPage> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
-          label: const Text('Add'),
+          label: const Text('Add Card'),
           icon: const Icon(Icons.add),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: Column(
           children: [
             buildSearchBar(),

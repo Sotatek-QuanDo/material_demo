@@ -27,8 +27,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/example.jpg
   AssetGenImage get example => const AssetGenImage('assets/images/example.jpg');
 
+  /// File path: assets/images/splash.jpg
+  AssetGenImage get splash => const AssetGenImage('assets/images/splash.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [example2, example3, example4, example];
+  List<AssetGenImage> get values =>
+      [example2, example3, example4, example, splash];
 }
 
 class Assets {
